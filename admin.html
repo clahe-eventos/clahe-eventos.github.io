@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0c0a07" />
 <title>Clahe Eventos · Editor de Invitaciones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,17 +12,16 @@
 :root{--bg:#0c0a07;--panel:#15110a;--panel2:#1d1810;--gold:#cdad24;--gold-soft:#ecd98a;--cream:#efe7d4;--muted:#9a895f;--hair:rgba(205,173,36,.28);--ok:#3a7d44;--ease:cubic-bezier(.22,.61,.25,1)}
 *{box-sizing:border-box}
 body{margin:0;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--cream);font-size:14px}
-.app{display:grid;grid-template-columns:minmax(360px,460px) 1fr;height:100vh}
-@media(max-width:880px){.app{grid-template-columns:1fr;height:auto}}
+.app{display:grid;grid-template-columns:minmax(360px,460px) 1fr;height:100vh;height:100dvh}
 /* ── panel form ── */
-.panel{background:var(--panel);border-right:1px solid var(--hair);overflow-y:auto;height:100vh}
-@media(max-width:880px){.panel{height:auto}}
-.head{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#15110a,#15110aee);backdrop-filter:blur(6px);border-bottom:1px solid var(--hair);padding:16px 20px}
+.panel{background:var(--panel);border-right:1px solid var(--hair);overflow-y:auto;height:100vh;height:100dvh;-webkit-overflow-scrolling:touch}
+.head{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#15110a,#15110aee);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid var(--hair);padding:16px 20px}
 .head h1{font-family:'Libre Baskerville',serif;font-style:italic;font-size:20px;margin:0;color:var(--gold-soft)}
 .head .sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:3px}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .btn{font-family:'Montserrat';font-weight:600;font-size:11px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--gold);
-  background:transparent;color:var(--gold-soft);padding:9px 13px;border-radius:7px;cursor:pointer;transition:.25s var(--ease)}
+  background:transparent;color:var(--gold-soft);padding:9px 13px;border-radius:7px;cursor:pointer;transition:.25s var(--ease);
+  -webkit-appearance:none;appearance:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .btn:hover{background:var(--gold);color:#1a1405}
 .btn.primary{background:var(--gold);color:#1a1405}
 .btn.primary:hover{filter:brightness(1.1)}
@@ -54,8 +54,7 @@ body{margin:0;font-family:'Montserrat',sans-serif;background:var(--bg);color:var
 .hint{font-size:11px;color:var(--muted);line-height:1.5;margin:4px 0 0}
 .hint b{color:var(--gold-soft)}
 /* preview */
-.preview{position:relative;background:#000;height:100vh}
-@media(max-width:880px){.preview{height:78vh}}
+.preview{position:relative;background:#000;height:100vh;height:100dvh}
 .pvbar{position:absolute;top:0;left:0;right:0;height:42px;background:#0c0a07;border-bottom:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:3}
 .pvbar .t{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .devices{display:flex;gap:6px}
@@ -67,6 +66,28 @@ body{margin:0;font-family:'Montserrat',sans-serif;background:var(--bg);color:var
 .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:#1a1405;
   padding:11px 20px;border-radius:8px;font-weight:600;font-size:13px;opacity:0;pointer-events:none;transition:.35s var(--ease);z-index:50}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ── campo de imagen (subir foto) ── */
+.imgbox{display:flex;gap:10px;align-items:flex-start;margin-top:6px}
+.imgbox .thumb{width:64px;height:64px;flex:0 0 auto;border-radius:8px;border:1px solid var(--hair);object-fit:cover;background:#0d0b07;display:none}
+.imgbox .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:7px}
+.imgbox .btnrow{display:flex;gap:7px;flex-wrap:wrap}
+.imgbox input[type=text]{width:100%}
+.busy{opacity:.55;pointer-events:none}
+/* ── celular / iPhone ── */
+@media(max-width:880px){
+  body{overflow-x:clip}
+  .app{display:flex;flex-direction:column;height:auto}
+  .preview{order:-1;position:sticky;top:0;z-index:20;height:56vh;height:56dvh;border-bottom:1px solid var(--hair)}
+  .panel{order:1;height:auto;overflow:visible;border-right:0}
+  .head{position:static;padding-left:calc(20px + env(safe-area-inset-left));padding-right:calc(20px + env(safe-area-inset-right))}
+  .form{padding-left:calc(20px + env(safe-area-inset-left));padding-right:calc(20px + env(safe-area-inset-right));padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+  .frameWrap{padding:8px}
+  #pv.phone{width:100%;height:100%}
+  .chips .chk{width:100%}
+  .field input[type=text],.field input[type=date],.field input[type=time],.field input[type=number],.field input[type=url],.field textarea,.field select{font-size:16px}
+  .btn{padding:11px 14px}
+  .itrow{grid-template-columns:76px 1fr 38px}
+}
 </style>
 </head>
 <body>
@@ -131,8 +152,13 @@ const DEFAULTS = {
 const MESES=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 const DIAS=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 
-let state = structuredClone(DEFAULTS);
-try{ const saved=localStorage.getItem('clahe-inv'); if(saved) state=Object.assign(structuredClone(DEFAULTS), JSON.parse(saved)); }catch(e){}
+/* clone seguro: structuredClone no existe en iOS < 15.4 */
+const clone = o => (typeof structuredClone==='function' ? structuredClone(o) : JSON.parse(JSON.stringify(o)));
+const IS_IOS = /iP(hone|od|ad)/.test(navigator.platform||'') || (/Mac/.test(navigator.platform||'') && 'ontouchend' in document);
+const IS_SMALL = matchMedia('(max-width:880px)').matches;
+
+let state = clone(DEFAULTS);
+try{ const saved=localStorage.getItem('clahe-inv'); if(saved) state=Object.assign(clone(DEFAULTS), JSON.parse(saved)); }catch(e){}
 
 /* helpers path */
 const get=(o,p)=>p.split('.').reduce((a,k)=>a&&a[k],o);
@@ -148,7 +174,7 @@ const SCHEMA=[
    ["introText","Frase del inicio","text"],
    ["message","Mensaje principal","textarea"],
    ["dedication","Dedicatoria (opcional)","text"],
-   ["photoUrl","Foto en el inicio — URL (opcional)","url"],
+   ["photoUrl","Foto en el inicio (opcional)","image"],
  ]],
  ["Fecha y hora",[
    ["__date","Fecha del evento","date"],
@@ -217,6 +243,7 @@ function renderField([path,label,type]){
   const wrap=document.createElement('div');
   if(type==='itinerary')return renderItinerary();
   if(type==='show')return renderShow();
+  if(type==='image')return renderImage(path,label);
   wrap.className='field';
   if(path==='__date'||path==='__start'){
     wrap.innerHTML='<label>'+label+'</label>';
@@ -235,6 +262,85 @@ function renderField([path,label,type]){
   el.oninput=()=>{ set(state,path, type==='number'?Number(el.value):el.value); schedule(); };
   wrap.appendChild(el);return wrap;
 }
+
+/* ── foto desde el celular (o URL) ──────────────────────────────
+   Achicamos la imagen en el navegador para que la invitacion no
+   pese de mas: maximo 1400px de lado y JPEG de calidad .82.      */
+const MAX_SIDE=1400, JPEG_Q=.82;
+async function decodeImage(file){
+  try{ return await createImageBitmap(file,{imageOrientation:'from-image'}); }
+  catch(e){}
+  try{ return await createImageBitmap(file); }
+  catch(e){}
+  return await new Promise((res,rej)=>{
+    const u=URL.createObjectURL(file), im=new Image();
+    im.onload=()=>{URL.revokeObjectURL(u);res(im);};
+    im.onerror=()=>{URL.revokeObjectURL(u);rej(new Error('decode'));};
+    im.src=u;
+  });
+}
+async function fileToDataUrl(file){
+  const img=await decodeImage(file);
+  const w0=img.width||img.naturalWidth, h0=img.height||img.naturalHeight;
+  if(!w0||!h0) throw new Error('vacia');
+  const k=Math.min(1, MAX_SIDE/Math.max(w0,h0));
+  const c=document.createElement('canvas');
+  c.width=Math.round(w0*k); c.height=Math.round(h0*k);
+  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  if(img.close)img.close();
+  return c.toDataURL('image/jpeg',JPEG_Q);
+}
+const kbOf=d=>Math.round(d.length/1365);
+function renderImage(path,label){
+  const wrap=document.createElement('div');wrap.className='field';
+  wrap.innerHTML='<label>'+label+'</label>';
+  const box=document.createElement('div');box.className='imgbox';
+  const thumb=document.createElement('img');thumb.className='thumb';thumb.alt='';
+  const col=document.createElement('div');col.className='col';
+  const row=document.createElement('div');row.className='btnrow';
+  const file=document.createElement('input');file.type='file';file.accept='image/*';file.hidden=true;
+  const pick=document.createElement('button');pick.type='button';pick.className='btn sm';pick.textContent='Subir foto';
+  const clr =document.createElement('button');clr.type='button';clr.className='btn sm';clr.textContent='Quitar';
+  const url=document.createElement('input');url.type='text';url.placeholder='...o pega el enlace de una imagen';
+  const hint=document.createElement('p');hint.className='hint';
+
+  function sync(){
+    const v=get(state,path)||'', isData=v.slice(0,5)==='data:';
+    if(v){thumb.src=v;thumb.style.display='block';}else{thumb.removeAttribute('src');thumb.style.display='none';}
+    url.value=isData?'':v;
+    clr.style.display=v?'':'none';
+    hint.innerHTML = isData
+      ? ('Foto cargada desde el dispositivo &middot; <b>~'+kbOf(v)+' KB</b>. Viaja dentro del archivo de la invitacion.')
+      : 'Pod&eacute;s subir una foto del celular o pegar un enlace.';
+  }
+  pick.onclick=()=>file.click();
+  file.onchange=async()=>{
+    const f=file.files&&file.files[0]; file.value='';
+    if(!f)return;
+    wrap.classList.add('busy'); toast('Procesando la foto...');
+    try{
+      const data=await fileToDataUrl(f);
+      set(state,path,data); sync(); schedule();
+      toast('Foto lista ('+kbOf(data)+' KB) ✓');
+    }catch(e){
+      toast('No pudimos leer esa imagen. Probá con otra.');
+    }finally{ wrap.classList.remove('busy'); }
+  };
+  clr.onclick=()=>{ set(state,path,''); sync(); schedule(); };
+  url.oninput=()=>{
+    const v=url.value.trim(); set(state,path,v);
+    if(v){thumb.src=v;thumb.style.display='block';}else{thumb.style.display='none';}
+    clr.style.display=v?'':'none'; schedule();
+  };
+
+  row.append(pick,clr);
+  col.append(row,url,hint);
+  box.append(thumb,col);
+  wrap.append(box,file);
+  sync();
+  return wrap;
+}
+
 function refreshDateText(){ // refresca los campos de texto de fecha si están en el DOM
   const t=formEl.querySelector('[data-path="date.time"]'); // no autollenamos time (es libre)
 }
@@ -282,25 +388,51 @@ function buildHTML(preview){
 }
 
 /* ── preview en vivo (debounce) ── */
-const pv=document.getElementById('pv');let tmr;
-function schedule(){clearTimeout(tmr);tmr=setTimeout(render,350);try{localStorage.setItem('clahe-inv',JSON.stringify(state));}catch(e){}}
+const pv=document.getElementById('pv');let tmr;const DEBOUNCE=IS_SMALL?650:350;let quotaWarned=false;
+function schedule(){
+  clearTimeout(tmr);tmr=setTimeout(render,DEBOUNCE);
+  try{ localStorage.setItem('clahe-inv',JSON.stringify(state)); }
+  catch(e){ if(!quotaWarned){quotaWarned=true;toast('No alcanza la memoria del navegador para guardar la foto. Usá "Guardar datos".');} }
+}
 function render(){pv.srcdoc=buildHTML(true);}
 
 /* ── acciones ── */
-function dl(name,content,type){const b=new Blob([content],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500);}
+function dl(name,content,type){
+  const b=new Blob([content],{type});const u=URL.createObjectURL(b);
+  const a=document.createElement('a');a.href=u;a.download=name;a.rel='noopener';
+  document.body.appendChild(a);a.click();a.remove();           // Safari necesita el <a> en el DOM
+  setTimeout(()=>URL.revokeObjectURL(u),4000);
+}
+/* En iPhone el menu nativo de compartir es mas util que "descargar":
+   permite mandarlo por WhatsApp o guardarlo en Archivos. */
+async function saveFile(name,content,type){
+  if(IS_IOS && navigator.canShare){
+    try{
+      const f=new File([content],name,{type});
+      if(navigator.canShare({files:[f]})){ await navigator.share({files:[f],title:name}); return true; }
+    }catch(e){ if(e && e.name==='AbortError') return false; }
+  }
+  dl(name,content,type); return true;
+}
 function slug(s){return (s||'invitacion').toString().normalize('NFD').replace(/[^\w]+/g,'-').replace(/^-|-$/g,'').toLowerCase();}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 
-document.getElementById('download').onclick=()=>{dl('invitacion-'+slug(state.celebrant)+'.html',buildHTML(false),'text/html');toast('Invitación descargada ✓');};
-document.getElementById('saveJson').onclick=()=>{dl('datos-'+slug(state.celebrant)+'.json',JSON.stringify(state,null,2),'application/json');toast('Datos guardados ✓');};
+document.getElementById('download').onclick=async()=>{ if(await saveFile('invitacion-'+slug(state.celebrant)+'.html',buildHTML(false),'text/html')) toast('Invitación lista ✓'); };
+document.getElementById('saveJson').onclick=async()=>{ if(await saveFile('datos-'+slug(state.celebrant)+'.json',JSON.stringify(state,null,2),'application/json')) toast('Datos guardados ✓'); };
 document.getElementById('loadJson').onclick=()=>document.getElementById('fileJson').click();
-document.getElementById('fileJson').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=Object.assign(structuredClone(DEFAULTS),JSON.parse(r.result));buildForm();render();toast('Datos cargados ✓');}catch(x){toast('Archivo inválido');}};r.readAsText(f);};
-document.getElementById('reset').onclick=()=>{if(confirm('¿Reiniciar con los valores de ejemplo?')){state=structuredClone(DEFAULTS);try{localStorage.removeItem('clahe-inv');}catch(e){}buildForm();render();toast('Reiniciado');}};
-document.getElementById('openTab').onclick=()=>{const w=window.open();w.document.open();w.document.write(buildHTML(false));w.document.close();};
+document.getElementById('fileJson').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=Object.assign(clone(DEFAULTS),JSON.parse(r.result));buildForm();render();toast('Datos cargados ✓');}catch(x){toast('Archivo inválido');}};r.readAsText(f);};
+document.getElementById('reset').onclick=()=>{if(confirm('¿Reiniciar con los valores de ejemplo?')){state=clone(DEFAULTS);try{localStorage.removeItem('clahe-inv');}catch(e){}buildForm();render();toast('Reiniciado');}};
+document.getElementById('openTab').onclick=()=>{
+  const u=URL.createObjectURL(new Blob([buildHTML(false)],{type:'text/html'}));
+  const a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),60000);
+};
 document.querySelectorAll('.dev[data-d]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.dev[data-d]').forEach(x=>x.classList.remove('on'));b.classList.add('on');pv.classList.toggle('phone',b.dataset.d==='phone');});
 
 /* init */
 buildForm();render();
+if(IS_SMALL){ const b=document.querySelector('.dev[data-d="phone"]'); if(b)b.click(); }
 </script>
 </body>
 </html>
