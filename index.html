@@ -29,7 +29,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--cream);
-  font-family:'Montserrat',sans-serif;font-weight:300;font-size:16px;line-height:1.7;
+  font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-weight:300;font-size:16px;line-height:1.7;
   letter-spacing:.2px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::selection{background:rgba(205,173,36,.3);color:#fff}
 a{color:inherit;text-decoration:none}
@@ -52,39 +52,39 @@ img{max-width:100%;display:block}
 #topmark{position:fixed;top:22px;left:50%;transform:translateX(-50%) translateY(-12px);z-index:125;text-align:center;
   opacity:0;transition:opacity 1s var(--ease),transform 1s var(--ease);pointer-events:auto}
 #topmark.show{opacity:.96;transform:translateX(-50%) translateY(0)}
-#topmark .s{font-family:'Libre Baskerville',serif;font-style:italic;font-size:24px;line-height:.9}
-#topmark .e{font-family:'Montserrat',sans-serif;letter-spacing:5px;font-size:7px;text-transform:uppercase;color:var(--muted);margin-top:1px}
+#topmark .s{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:24px;line-height:.9}
+#topmark .e{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:5px;font-size:7px;text-transform:uppercase;color:var(--muted);margin-top:1px}
 
 .lockup{display:inline-flex;flex-direction:column;align-items:center;line-height:1}
-.lockup .s{font-family:'Libre Baskerville',serif;font-style:italic;background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent;
+.lockup .s{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 2px 12px rgba(205,173,36,.25))}
-.lockup .e{font-family:'Montserrat',sans-serif;text-transform:uppercase;color:var(--gold-soft);display:flex;align-items:center;gap:.6em}
+.lockup .e{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;text-transform:uppercase;color:var(--gold-soft);display:flex;align-items:center;gap:.6em}
 .lockup .e::before,.lockup .e::after{content:"";height:1px;width:1.6em;background:var(--gold)}
 
 #intro{position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 42%,#15100a,#040302 72%);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity 1.2s var(--ease),visibility 1.2s}
 #intro.hide{opacity:0;visibility:hidden}
 #intro .lockup .s{font-size:50px}#intro .lockup .e{font-size:10px;letter-spacing:6px;margin-top:2px}
-.intro-presents{font-family:'Montserrat',sans-serif;letter-spacing:5px;font-size:10px;text-transform:uppercase;color:var(--muted);opacity:0;animation:fu 1s 1.1s forwards}
+.intro-presents{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:5px;font-size:10px;text-transform:uppercase;color:var(--muted);opacity:0;animation:fu 1s 1.1s forwards}
 .mono{width:118px;height:118px;position:relative;display:grid;place-items:center;margin-top:6px}
 .mono svg{position:absolute;inset:0}
 .mono .ring{fill:none;stroke:url(#g);stroke-width:1;stroke-dasharray:357;stroke-dashoffset:357;animation:draw 2.4s var(--ease) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
-.mono b{font-family:'Libre Baskerville',serif;font-style:italic;font-size:54px;line-height:1;background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent;
+.mono b{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:54px;line-height:1;background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent;
   opacity:0;transform:scale(.7);animation:pop 1.2s .6s var(--ease) forwards}
 @keyframes pop{to{opacity:1;transform:scale(1)}}
-.intro-cap{font-family:'Montserrat',sans-serif;letter-spacing:5px;font-size:11px;color:var(--muted);text-transform:uppercase;opacity:0;animation:fu 1s 1.6s forwards}
+.intro-cap{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:5px;font-size:11px;color:var(--muted);text-transform:uppercase;opacity:0;animation:fu 1s 1.6s forwards}
 @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 main{position:relative;z-index:1}
 section{max-width:var(--maxw);margin:0 auto;padding:clamp(58px,10.5vw,116px) 30px;text-align:center;position:relative}
-.eyebrow{font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:5px;font-size:11px;color:var(--gold);margin:0 0 22px;opacity:.92}
-.script{font-family:'Libre Baskerville',serif;font-style:italic;line-height:1.12;background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent;
+.eyebrow{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;text-transform:uppercase;letter-spacing:5px;font-size:11px;color:var(--gold);margin:0 0 22px;opacity:.92}
+.script{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;line-height:1.12;background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 2px 14px rgba(205,173,36,.22))}
-.serif{font-family:'Libre Baskerville',serif}
+.serif{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif}
 .gold{background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-family:'Libre Baskerville',serif;font-style:italic;color:#e3d8bd;font-weight:300;font-size:clamp(18px,2.3vw,22px);max-width:37ch;margin:18px auto 0}
-.fine{font-family:'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.lead{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;color:#e3d8bd;font-weight:300;font-size:clamp(18px,2.3vw,22px);max-width:37ch;margin:18px auto 0}
+.fine{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:11px;color:var(--muted)}
 .shimmer{position:relative}
 .shimmer::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 42%,rgba(255,255,255,.7) 50%,transparent 58%);
   -webkit-background-clip:text;background-clip:text;color:transparent;mix-blend-mode:screen;background-size:260% 100%;animation:shine 8s 2s linear infinite}
@@ -99,14 +99,14 @@ section{max-width:var(--maxw);margin:0 auto;padding:clamp(58px,10.5vw,116px) 30p
 #hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:96px 30px 80px}
 .portrait{width:clamp(120px,30vw,168px);aspect-ratio:1;border-radius:50%;object-fit:cover;margin:0 auto 22px;
   border:1px solid var(--gold);box-shadow:0 0 0 6px rgba(205,173,36,.08),0 20px 50px -20px rgba(0,0,0,.8);display:none}
-.hero-type{font-family:'Montserrat',sans-serif;letter-spacing:8px;text-transform:uppercase;font-size:clamp(13px,3.4vw,17px);color:var(--gold-soft)}
-.hero-name{font-family:'Libre Baskerville',serif;font-style:italic;font-size:clamp(52px,13vw,110px);line-height:1.04;margin:4px 0 2px}
+.hero-type{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:8px;text-transform:uppercase;font-size:clamp(13px,3.4vw,17px);color:var(--gold-soft)}
+.hero-name{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:clamp(52px,13vw,110px);line-height:1.04;margin:4px 0 2px}
 .hero-name .ch{display:inline-block;opacity:0;transform:translateY(40px) rotate(4deg);animation:rise 1s var(--ease) forwards}
 @keyframes rise{to{opacity:1;transform:none}}
-.roman{display:inline-flex;align-items:center;gap:16px;margin-top:8px;font-family:'Montserrat',sans-serif;letter-spacing:10px;
+.roman{display:inline-flex;align-items:center;gap:16px;margin-top:8px;font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:10px;
   font-size:clamp(15px,4vw,22px);color:var(--gold-soft);text-transform:uppercase;padding-left:10px}
 .roman .hr{width:38px;height:1px;background:var(--gold);opacity:.7}
-.datestamp{font-family:'Montserrat',sans-serif;letter-spacing:6px;font-size:clamp(12px,3vw,15px);color:var(--muted);margin-top:18px}
+.datestamp{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:6px;font-size:clamp(12px,3vw,15px);color:var(--muted);margin-top:18px}
 .dedication{font-style:italic;color:#cdbf9d;max-width:30ch;margin:14px auto 0;font-size:16px}
 .scrolldot{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:9px}
 .scrolldot .l{width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:pulse 2.2s infinite}
@@ -116,7 +116,7 @@ section{max-width:var(--maxw);margin:0 auto;padding:clamp(58px,10.5vw,116px) 30p
   position:relative;overflow:hidden;box-shadow:0 30px 60px -36px rgba(0,0,0,.9),inset 0 1px 0 rgba(240,220,170,.06);
   transition:transform .5s var(--ease),box-shadow .5s,border-color .5s}
 .card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 38px 70px -34px rgba(0,0,0,.95),0 0 30px -14px rgba(205,173,36,.4)}
-.btn{appearance:none;border:1px solid var(--gold);background:transparent;cursor:pointer;font-family:'Montserrat',sans-serif;letter-spacing:3px;
+.btn{appearance:none;border:1px solid var(--gold);background:transparent;cursor:pointer;font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:3px;
   text-transform:uppercase;font-size:11.5px;color:var(--gold-soft);padding:15px 32px;border-radius:50px;position:relative;overflow:hidden;
   display:inline-flex;align-items:center;gap:10px;transition:color .5s var(--ease),transform .4s var(--ease),box-shadow .5s,border-color .5s}
 .btn svg{width:15px;height:15px}
@@ -128,20 +128,20 @@ section{max-width:var(--maxw);margin:0 auto;padding:clamp(58px,10.5vw,116px) 30p
 
 .count{display:flex;justify-content:center;gap:clamp(10px,3.5vw,26px);flex-wrap:wrap;margin-top:6px}
 .u{min-width:64px}
-.u .n{font-family:'Montserrat',sans-serif;font-size:clamp(38px,9.5vw,58px);line-height:1;font-variant-numeric:tabular-nums;
+.u .n{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-size:clamp(38px,9.5vw,58px);line-height:1;font-variant-numeric:tabular-nums;
   background:var(--champ);-webkit-background-clip:text;background-clip:text;color:transparent;transition:opacity .3s}
 .u .n.flip{animation:flip .5s var(--ease)}
 @keyframes flip{0%{opacity:.3;transform:translateY(-5px)}100%{opacity:1;transform:none}}
-.u .t{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:10px}
-.count .c{align-self:flex-start;font-family:'Montserrat',sans-serif;font-size:clamp(30px,7vw,44px);color:var(--gold-deep);opacity:.55}
+.u .t{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.count .c{align-self:flex-start;font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-size:clamp(30px,7vw,44px);color:var(--gold-deep);opacity:.55}
 
 .date{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
-.date .side{font-family:'Montserrat',sans-serif;letter-spacing:4px;text-transform:uppercase;font-size:14px;color:var(--gold-soft)}
-.date .num{font-family:'Montserrat',sans-serif;font-size:clamp(58px,15vw,82px);line-height:.9}
+.date .side{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;font-size:14px;color:var(--gold-soft)}
+.date .num{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-size:clamp(58px,15vw,82px);line-height:.9}
 .date .vl{width:1px;height:56px;background:linear-gradient(var(--gold),transparent,var(--gold))}
-.dayname{font-family:'Libre Baskerville',serif;font-style:italic;font-size:clamp(28px,7vw,44px);margin-top:8px}
+.dayname{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:clamp(28px,7vw,44px);margin-top:8px}
 .pill{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding:9px 22px;border:1px solid var(--hair);border-radius:50px;
-  font-family:'Montserrat',sans-serif;letter-spacing:2px;font-size:12.5px;color:var(--gold-soft)}
+  font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:2px;font-size:12.5px;color:var(--gold-soft)}
 
 .timeline{max-width:380px;margin:8px auto 0;position:relative;text-align:left}
 .timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--hair),var(--gold),var(--hair))}
@@ -149,27 +149,27 @@ section{max-width:var(--maxw);margin:0 auto;padding:clamp(58px,10.5vw,116px) 30p
 .tl:last-child{padding-bottom:0}
 .tl .dot{position:absolute;left:5px;top:5px;width:13px;height:13px;border-radius:50%;border:1px solid var(--gold);background:var(--bg);box-shadow:0 0 0 4px rgba(205,173,36,.08)}
 .tl .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--champ)}
-.tl .time{font-family:'Montserrat',sans-serif;letter-spacing:2px;font-size:13px;color:var(--gold-soft)}
-.tl .lab{font-family:'Libre Baskerville',serif;font-style:italic;font-size:17px;color:#e3d8bd}
+.tl .time{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:2px;font-size:13px;color:var(--gold-soft)}
+.tl .lab{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:17px;color:#e3d8bd}
 
 .grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:8px}
 .tile{padding:32px 26px;text-align:center}
 .tile .ico{width:42px;height:42px;margin:0 auto 16px;color:var(--gold)}
-.tile h3{font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:14px;margin:0 0 8px;color:var(--gold-soft)}
+.tile h3{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:14px;margin:0 0 8px;color:var(--gold-soft)}
 .tile p{margin:0;color:#d8ccae}
 .tile .em{color:var(--gold);font-style:italic}
 
-.tag{font-family:'Libre Baskerville',serif;font-style:italic;font-size:clamp(30px,7vw,52px);margin:2px 0 0}
+.tag{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:clamp(30px,7vw,52px);margin:2px 0 0}
 
 footer{padding:64px 30px 90px;text-align:center}
-.f-script{font-family:'Libre Baskerville',serif;font-style:italic;font-size:clamp(30px,7vw,50px);margin:0}
-.f-name{font-family:'Libre Baskerville',serif;font-style:italic;font-size:clamp(44px,11vw,84px);line-height:1.04;margin-top:2px}
+.f-script{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:clamp(30px,7vw,50px);margin:0}
+.f-name{font-family:'Libre Baskerville','Iowan Old Style','Times New Roman',Georgia,serif;font-style:italic;font-size:clamp(44px,11vw,84px);line-height:1.04;margin-top:2px}
 .brandcard{max-width:520px;margin:46px auto 0;padding:40px 30px}
 .brandcard .lockup .s{font-size:48px}.brandcard .lockup .e{font-size:9px;letter-spacing:5px;margin-top:2px}
 .brandcard .tag-line{font-style:italic;color:#cdbf9d;margin:14px 0 4px}
-.brandcard .salon{font-family:'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:10px;color:var(--muted)}
+.brandcard .salon{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:10px;color:var(--muted)}
 .brand-cta{margin-top:24px}
-.contact{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:24px;font-family:'Montserrat',sans-serif;letter-spacing:1px;font-size:12px;color:var(--gold-soft)}
+.contact{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:24px;font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:1px;font-size:12px;color:var(--gold-soft)}
 .contact a{display:inline-flex;align-items:center;gap:7px;transition:color .3s}
 .contact a:hover{color:var(--gold-bright)}
 .contact svg{width:14px;height:14px;color:var(--gold)}
@@ -177,7 +177,7 @@ footer{padding:64px 30px 90px;text-align:center}
 .social a{width:40px;height:40px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--gold-soft);transition:.4s var(--ease)}
 .social a:hover{background:var(--champ);color:#201808;border-color:transparent;transform:translateY(-2px)}
 .social svg{width:17px;height:17px}
-.credit{margin-top:30px;font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:9px;color:#6f6242}
+.credit{margin-top:30px;font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:9px;color:#6f6242}
 
 #music{position:fixed;right:20px;bottom:20px;z-index:135;width:48px;height:48px;border-radius:50%;
   background:linear-gradient(160deg,#171107,#090604);border:1px solid var(--hair);color:var(--gold);display:none;align-items:center;justify-content:center;cursor:pointer}
@@ -355,7 +355,7 @@ const CONFIG = {
   introText:"Te invito a este día tan especial",
   message:"Te espero para compartir la alegría de esa noche que será para mí mágica, inolvidable y única.",
   dedication:"", photoUrl:"",
-  date:{ y:2026, mo:4, d:25, h:22, mi:0, durationHours:7, dayName:"Sábado", dayNum:"25", month:"Abril", year:"2026", time:"22:00 a 05:00 hs" },
+  date:{ y:2026, mo:4, d:25, h:22, mi:0, durationHours:7, utcOffset:-3, dayName:"Sábado", dayNum:"25", month:"Abril", year:"2026", time:"22:00 a 05:00 hs" },
   venue:{ name:"Clahe Eventos · Piñeyro", address:"Av. Galicia 541", mapsQuery:"Clahe Eventos Piñeyro, Av. Galicia 541, Piñeyro, Buenos Aires" },
   whatsapp:"",
   itinerary:[
@@ -376,7 +376,8 @@ const CONFIG = {
     whatsapp:"5491134879285", instagram:"https://www.instagram.com/claheeventos", site:"https://www.claheeventos.com",
     contactUrl:"https://www.claheeventos.com/contactus", email:"atencionalcliente@claheeventos.com", ctaLabel:"Soñá tu evento con Clahe" },
   show:{ topMark:false, countdown:true, fecha:true, itinerario:true, lugar:true, rsvp:true, dress:true, diet:true, song:true, gift:true, hashtag:true },
-  musicUrl:""
+  musicUrl:"",
+  theme:null
 };
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -385,12 +386,41 @@ const CONFIG = {
 const $=id=>document.getElementById(id);
 const set=(id,t)=>{const e=$(id); if(e)e.textContent=t;};
 
+/* Los textos del CONFIG se editan desde el panel, asi que todo lo que
+   termina en un href o un src pasa por aca: solo esquemas seguros, nunca
+   un "javascript:". */
+const PROTO_OK=['http:','https:','mailto:','tel:'];
+function safeUrl(u,porDefecto){
+  if(!u)return porDefecto||'';
+  try{ const p=new URL(String(u),location.href); return PROTO_OK.includes(p.protocol)?p.href:(porDefecto||''); }
+  catch(e){ return porDefecto||''; }
+}
+const soloDigitos=v=>String(v==null?'':v).replace(/\D/g,'');
+
+/* Tema de color: pisa las variables del CSS. Si no viene ninguno queda el
+   oro de siempre. Se filtra para que no entre un url() ni corte la regla. */
+(function(){
+  const t=CONFIG.theme; if(!t||typeof t!=='object')return;
+  const valido=v=>typeof v==='string'&&v&&v.length<160&&!/[;{}]|url\(|expression/i.test(v);
+  const mapa={bg:'--bg',bg2:'--bg-2',a:'--gold',a2:'--gold-2',soft:'--gold-soft',bright:'--gold-bright',deep:'--gold-deep',champ:'--champ',cream:'--cream',muted:'--muted'};
+  const r=document.documentElement.style;
+  for(const k in mapa) if(valido(t[k])) r.setProperty(mapa[k],t[k]);
+  if(/^[\d\s,]+$/.test(String(t.rgb||''))){
+    r.setProperty('--hair','rgba('+t.rgb+',.26)');
+    r.setProperty('--hair-2','rgba('+t.rgb+',.14)');
+  }
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta&&valido(t.bg))meta.content=t.bg;
+})();
+
 set('introBrandS',CONFIG.brand.scriptName); set('introBrandE',CONFIG.brand.caps);
 set('brandS',CONFIG.brand.scriptName); set('brandE',CONFIG.brand.caps);
 set('topmarkS',CONFIG.brand.scriptName); set('topmarkE',CONFIG.brand.caps);
-$('topmark').href=CONFIG.brand.site;['logoTL','logoBR','introLogo','footLogo'].forEach(id=>{const e=$(id);if(e&&CONFIG.brand.logoUrl)e.src=CONFIG.brand.logoUrl;});
+$('topmark').href=safeUrl(CONFIG.brand.site,'#');
+(function(){const logo=safeUrl(CONFIG.brand.logoUrl);
+  ['logoTL','logoBR','introLogo','footLogo'].forEach(id=>{const e=$(id);if(e&&logo)e.src=logo;});})();
 set('brandTag',CONFIG.brand.tagline); set('brandSalon',CONFIG.brand.salon);
-$('btn-clahe').href=CONFIG.brand.contactUrl; set('ctaTxt',CONFIG.brand.ctaLabel);
+$('btn-clahe').href=safeUrl(CONFIG.brand.contactUrl,'#'); set('ctaTxt',CONFIG.brand.ctaLabel);
 
 set('introMono',CONFIG.monogram); set('introCap',CONFIG.introText);
 set('heroType',CONFIG.preTitle); set('romanTxt',CONFIG.eventLabel);
@@ -409,22 +439,33 @@ set('fScript',CONFIG.closing.line); set('fName',CONFIG.celebrant);
 document.title=CONFIG.preTitle+' '+CONFIG.eventLabel+' · '+CONFIG.celebrant;
 
 if(CONFIG.dedication){const d=$('heroDedication');d.textContent='«'+CONFIG.dedication+'»';d.hidden=false;}
-if(CONFIG.photoUrl){const p=$('heroPhoto');p.src=CONFIG.photoUrl;p.alt=CONFIG.celebrant;p.style.display='block';}
+if(CONFIG.photoUrl){const p=$('heroPhoto');
+  /* la foto subida desde el celular llega como data: y no pasa por safeUrl */
+  const src=/^data:image\//.test(CONFIG.photoUrl)?CONFIG.photoUrl:safeUrl(CONFIG.photoUrl);
+  if(src){p.src=src;p.alt='Foto de '+CONFIG.celebrant;p.style.display='block';}}
 
-(function(){const host=$('heroName');[...CONFIG.celebrant].forEach((c,i)=>{const s=document.createElement('span');s.className='ch';s.textContent=c===' '?' ':c;s.style.animationDelay=(0.6+i*0.06)+'s';host.appendChild(s);});})();
+(function(){const host=$('heroName');
+  host.setAttribute('aria-label',CONFIG.celebrant);
+  [...CONFIG.celebrant].forEach((c,i)=>{const s=document.createElement('span');s.className='ch';s.setAttribute('aria-hidden','true');s.textContent=c===' '?' ':c;s.style.animationDelay=(0.6+i*0.06)+'s';host.appendChild(s);});})();
 
 (function(){const tl=$('timeline');if(!CONFIG.itinerary||!CONFIG.itinerary.length){$('sec-itinerario').hidden=true;return;}
+  const celda=(cls,txt)=>{const e=document.createElement('div');e.className=cls;e.textContent=txt==null?'':String(txt);return e;};
   CONFIG.itinerary.forEach(it=>{const row=document.createElement('div');row.className='tl';
-    row.innerHTML='<span class="dot"></span><div class="time">'+it.time+'</div><div class="lab">'+it.label+'</div>';tl.appendChild(row);});})();
+    const dot=document.createElement('span');dot.className='dot';
+    row.append(dot,celda('time',it.time),celda('lab',it.label));tl.appendChild(row);});})();
 
 const map={countdown:'sec-countdown',fecha:'sec-fecha',itinerario:'sec-itinerario',lugar:'sec-lugar',rsvp:'sec-rsvp',dress:'sec-dress',diet:'sec-diet',song:'sec-song',gift:'sec-regalo',hashtag:'sec-hashtag'};
 for(const k in map){if(CONFIG.show[k]===false){const e=$(map[k]);if(e)e.hidden=true;}}
 
 const D=CONFIG.date;
-const startUTC=new Date(Date.UTC(D.y,D.mo-1,D.d,D.h+3,D.mi,0));
+/* El evento pasa en una zona fija (Argentina = -3). Guardarlo en el CONFIG
+   hace que la cuenta regresiva y el "agregar al calendario" den bien aunque
+   el invitado abra la invitacion desde otro pais. */
+const TZ=Number.isFinite(D.utcOffset)?D.utcOffset:-3;
+const startUTC=new Date(Date.UTC(D.y,D.mo-1,D.d,D.h-TZ,D.mi,0));
 const endUTC=new Date(startUTC.getTime()+D.durationHours*3600*1000);
 const fmt=d=>d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
-const wa=CONFIG.whatsapp||CONFIG.brand.whatsapp;
+const wa=soloDigitos(CONFIG.whatsapp)||soloDigitos(CONFIG.brand.whatsapp);
 const waLink=m=>"https://wa.me/"+wa+"?text="+encodeURIComponent(m);
 $('btn-map').href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(CONFIG.venue.mapsQuery);
 $('btn-cal').href="https://calendar.google.com/calendar/render?action=TEMPLATE"
@@ -439,48 +480,128 @@ $('btn-song').href=waLink('¡Hola! Para la playlist de '+CONFIG.eventLabel+' de 
   const ph='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>';
   const we='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
   const em='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';
-  if(b.whatsapp)c.insertAdjacentHTML('beforeend','<a target="_blank" rel="noopener" href="https://wa.me/'+b.whatsapp+'">'+ph+'WhatsApp</a>');
-  if(b.site)c.insertAdjacentHTML('beforeend','<a target="_blank" rel="noopener" href="'+b.site+'">'+we+'claheeventos.com</a>');
-  if(b.email)c.insertAdjacentHTML('beforeend','<a href="mailto:'+b.email+'">'+em+'Escribinos</a>');
+  /* El icono es una constante nuestra (va como HTML); el texto y el enlace
+     vienen del panel, asi que van por textContent y safeUrl. */
+  const enlace=(href,icono,texto,nueva)=>{
+    if(!href)return;
+    const a=document.createElement('a');
+    a.href=href;
+    if(nueva){a.target='_blank';a.rel='noopener';}
+    a.innerHTML=icono;
+    a.appendChild(document.createTextNode(texto));
+    c.appendChild(a);
+  };
+  const waNum=soloDigitos(b.whatsapp);
+  enlace(waNum?'https://wa.me/'+waNum:'',ph,'WhatsApp',true);
+  const sitio=safeUrl(b.site);
+  enlace(sitio,we,String(b.site||'').replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''),true);
+  const mail=String(b.email||'').trim();
+  enlace(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)?'mailto:'+mail:'',em,'Escribinos',false);
 })();
 
 (function(){const host=$('social'),b=CONFIG.brand;
   const ig='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>';
   const w='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.4.4 0 0 0 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c-.1-.1-.2-.2-.4-.3z"/></svg>';
-  if(b.instagram){const a=document.createElement('a');a.href=b.instagram;a.target="_blank";a.rel="noopener";a.innerHTML=ig;host.appendChild(a);}
-  const wb=document.createElement('a');wb.href="https://wa.me/"+b.whatsapp;wb.target="_blank";wb.rel="noopener";wb.innerHTML=w;host.appendChild(wb);
+  const red=(href,icono,titulo)=>{
+    if(!href)return;
+    const a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';
+    a.setAttribute('aria-label',titulo);a.innerHTML=icono;host.appendChild(a);
+  };
+  red(safeUrl(b.instagram),ig,'Instagram');
+  const waNum=soloDigitos(b.whatsapp);
+  red(waNum?'https://wa.me/'+waNum:'',w,'WhatsApp');
 })();
 
 if(CONFIG.show.topMark===false)$('topmark').style.display='none';
 
 const pad=n=>String(n).padStart(2,'0');
 const el={d:$('cd-d'),h:$('cd-h'),m:$('cd-m'),s:$('cd-s')};let prev={};
-function tick(){const diff=Math.max(0,startUTC.getTime()-Date.now());
+let reloj=0;
+/* Un contador en 00:00:00 despues de la fiesta queda feo: cuando la fecha
+   pasa cambiamos el bloque por un mensaje. */
+function yaPaso(){
+  const sec=$('sec-countdown'); if(!sec)return;
+  const caja=sec.querySelector('.count'); if(caja)caja.hidden=true;
+  const ojo=sec.querySelector('.eyebrow'), tit=sec.querySelector('h2');
+  const enCurso=Date.now()<endUTC.getTime();
+  if(ojo)ojo.textContent=enCurso?'Es hoy':'Gracias por acompañarnos';
+  if(tit)tit.textContent=enCurso?'¡Llegó el día!':'Un recuerdo para toda la vida';
+}
+function tick(){
+  const diff=startUTC.getTime()-Date.now();
+  if(diff<=0){clearInterval(reloj);yaPaso();return;}
+  if(document.hidden)return;
   const v={d:Math.floor(diff/864e5),h:Math.floor(diff%864e5/36e5),m:Math.floor(diff%36e5/6e4),s:Math.floor(diff%6e4/1e3)};
   for(const k in el){const t=pad(v[k]);if(prev[k]!==t){el[k].textContent=t;el[k].classList.add('flip');setTimeout(()=>el[k].classList.remove('flip'),480);prev[k]=t;}}}
-tick();setInterval(tick,1000);
+tick();reloj=setInterval(tick,1000);
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.16,rootMargin:'0px 0px -7% 0px'});
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));
-addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);$('prog').style.width=(p*100)+'%';
-  if(CONFIG.show.topMark!==false)$('topmark').classList.toggle('show',h.scrollTop>innerHeight*0.6);},{passive:true});
+/* Barra de progreso, marca de arriba y parallax del nombre: los tres iban
+   en listeners de scroll separados. Juntos y a un cuadro por frame el
+   celular sufre bastante menos. */
+(function(){
+  const prog=$('prog'),marca=$('topmark'),nombre=$('heroName'),conMarca=CONFIG.show.topMark!==false;
+  let pedido=false;
+  function pintar(){
+    pedido=false;
+    const h=document.documentElement,y=h.scrollTop;
+    prog.style.width=(y/(h.scrollHeight-h.clientHeight||1)*100)+'%';
+    if(conMarca)marca.classList.toggle('show',y>innerHeight*0.6);
+    if(y<innerHeight)nombre.style.transform='translateY('+y*0.08+'px)';
+  }
+  addEventListener('scroll',()=>{if(!pedido){pedido=true;requestAnimationFrame(pintar);}},{passive:true});
+  pintar();
+})();
 
-const cv=$('motes'),cx=cv.getContext('2d');let W,H,DPR,ps;const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const cv=$('motes'),cx=cv.getContext('2d');let W,H,DPR,ps;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const MOTE=/^[\d\s,]+$/.test(String((CONFIG.theme&&CONFIG.theme.rgb)||''))?CONFIG.theme.rgb:'205,173,60';
 function rs(){DPR=Math.min(devicePixelRatio||1,2);W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
   const n=Math.min(70,Math.floor(innerWidth*innerHeight/22000));ps=Array.from({length:n},mk);}
 function mk(){return{x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.3+.25)*DPR,vy:(Math.random()*.16+.03)*DPR,vx:(Math.random()-.5)*.1*DPR,a:Math.random()*6.28,tw:Math.random()*.03+.008,b:Math.random()*.45+.2};}
 function fr(){cx.clearRect(0,0,W,H);for(const p of ps){p.a+=p.tw;p.y-=p.vy;p.x+=p.vx;if(p.y<-8){p.y=H+8;p.x=Math.random()*W;}if(p.x<-8)p.x=W+8;if(p.x>W+8)p.x=-8;
-  const t=p.b+Math.sin(p.a)*.3;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fillStyle='rgba(205,173,60,'+Math.max(0,t)+')';cx.shadowColor='rgba(205,173,60,.7)';cx.shadowBlur=7*DPR;cx.fill();}
-  if(!reduce)requestAnimationFrame(fr);}
-rs();addEventListener('resize',rs);reduce?fr():requestAnimationFrame(fr);
+  const t=p.b+Math.sin(p.a)*.3;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fillStyle='rgba('+MOTE+','+Math.max(0,t)+')';cx.shadowColor='rgba('+MOTE+',.7)';cx.shadowBlur=7*DPR;cx.fill();}
+  raf=(!reduce&&!document.hidden)?requestAnimationFrame(fr):0;}
+let raf=0;
+function arrancar(){ if(!raf&&!reduce&&!document.hidden) raf=requestAnimationFrame(fr); }
+rs();
+/* En el celular la barra del navegador dispara "resize" al scrollear. Si
+   rehacemos todas las particulas en cada uno se nota el tiron, asi que solo
+   cuando cambia el ancho o la altura de verdad. */
+(function(){let ancho=innerWidth,alto=innerHeight,t;
+  addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>{
+    if(innerWidth!==ancho||Math.abs(innerHeight-alto)>140){ancho=innerWidth;alto=innerHeight;rs();}
+  },200);},{passive:true});})();
+/* Con la pestana en segundo plano no dibujamos nada: son minutos de bateria. */
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){ if(raf)cancelAnimationFrame(raf); raf=0; } else arrancar();
+});
+if(reduce)fr(); else arrancar();
 
-const hn=$('heroName');addEventListener('scroll',()=>{const y=scrollY;if(y<innerHeight)hn.style.transform='translateY('+y*0.08+'px)';},{passive:true});
 
-addEventListener('load',()=>setTimeout(()=>$('intro').classList.add('hide'),2900));
-setTimeout(()=>$('intro').classList.add('hide'),3900);
+/* La portada se va sola con la pagina cargada o, si la conexion viene lenta,
+   a los 3.9s como maximo. Tambien se puede tocar para saltearla. */
+(function(){const intro=$('intro');let cerrado=false;
+  const cerrar=()=>{if(cerrado)return;cerrado=true;clearTimeout(tope);intro.classList.add('hide');};
+  const tope=setTimeout(cerrar,3900);
+  const trasCarga=()=>setTimeout(cerrar,2900);
+  if(document.readyState==='complete')trasCarga(); else addEventListener('load',trasCarga);
+  intro.addEventListener('click',cerrar);
+})();
 const mu=$('music'),au=$('audio');
-if(CONFIG.musicUrl){au.src=CONFIG.musicUrl;mu.style.display='flex';
-  mu.onclick=()=>{if(au.paused){au.play();mu.classList.add('on');}else{au.pause();mu.classList.remove('on');}};}
+(function(){const src=safeUrl(CONFIG.musicUrl); if(!src)return;
+  au.src=src; mu.style.display='flex';
+  /* Safari rechaza play() bastante seguido: si pasa, el boton vuelve a su
+     estado real en vez de quedar "sonando" en silencio. */
+  mu.onclick=()=>{
+    if(au.paused) Promise.resolve(au.play()).catch(()=>mu.classList.remove('on'));
+    else au.pause();
+  };
+  au.addEventListener('play',()=>mu.classList.add('on'));
+  au.addEventListener('pause',()=>mu.classList.remove('on'));
+  au.addEventListener('error',()=>{mu.style.display='none';});
+})();
 </script>
 </body>
 </html>
