@@ -380,6 +380,21 @@ const CONFIG = {
   theme:null
 };
 
+/* LINK INSTANTÁNEO — la invitación puede venir dentro de la dirección:
+   index.html#d=<base64url del CONFIG en JSON>. El editor lo arma en el
+   celular, sin servidor ni cuenta. Lo que va después del # no viaja al
+   servidor. Si no hay #d, se usa el CONFIG de arriba. */
+(function(){
+  try{
+    const m=location.hash.match(/^#d=([A-Za-z0-9_-]+)$/); if(!m)return;
+    let b=m[1].replace(/-/g,'+').replace(/_/g,'/'); while(b.length%4)b+='=';
+    const bin=atob(b), bytes=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+    const d=JSON.parse(new TextDecoder().decode(bytes));
+    if(d&&typeof d==='object'&&!Array.isArray(d))Object.assign(CONFIG,d);
+  }catch(e){}
+})();
+
 /* ════════════════════════════════════════════════════════════════════════
    MOTOR — no es necesario tocar nada de aquí en adelante
    ════════════════════════════════════════════════════════════════════════ */

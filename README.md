@@ -4,21 +4,18 @@
 - `admin.html`: el editor. Lleva `index.html` embebido en la constante `TEMPLATE` (una sola línea larga): si se toca `index.html`, hay que regenerar esa línea.
 - `i/<nombre>/index.html`: invitaciones publicadas desde el editor, una carpeta por evento.
 
-## Publicar con un link
+## Crear link (modo normal)
 
-El botón **Publicar (link)** del editor sube la invitación a este repositorio con la API de GitHub y GitHub Pages la sirve en
-`<dirección del sitio>/i/<nombre>/`.
+El botón **Crear link** arma la dirección de la invitación en el momento, sin servidor ni cuenta: la invitación
+entera viaja dentro de la URL (`index.html#d=<datos>`). Después la acorta con spoo.me para que quede una URL
+normal; si el acortador no responde, el link largo funciona igual.
 
-El editor deduce el usuario u organización y el nombre del repositorio de la dirección desde la que se abre, así que el
-repositorio puede cambiar de dueño o de nombre sin tocar el código. Si el sitio pasa a usar un dominio propio, hay que
-completar `PUB_FIJO` en `admin.html`.
+Limitación: la foto subida desde el celular no entra en un link, así que se omite. Para tener foto hay que pegar el
+enlace de una imagen ya alojada (el editor convierte los enlaces "compartir" de Google Drive).
 
-La primera vez pide activarlo. Hay dos formas:
+## Publicar en GitHub (modo avanzado, `admin.html?pro`)
 
-- **Desde otro celular ya activado**: botón *Pasar el acceso a otro celular*. Manda por WhatsApp un link
-  (`admin.html#acceso=...`) que, al abrirse una vez, deja el editor activado en ese celular.
-- **Desde la cuenta de GitHub**: generar un token fine-grained con permiso *Contents: Read and write* sobre el
-  repositorio (el editor abre la página ya prellenada) y pegarlo en el editor.
-
-El token vence al año: el editor avisa y se vuelve a activar con uno nuevo. El link de cada invitación tarda alrededor
-de un minuto en activarse. Para corregir algo, se vuelve a publicar con el mismo nombre y el link se actualiza.
+Sube la invitación al repositorio con la API de GitHub y GitHub Pages la sirve en `<dirección del sitio>/i/<nombre>/`,
+con la foto adentro y un link corto propio. Requiere activar el editor una vez con un token de GitHub
+(*Contents: Read and write*); el editor abre la página de GitHub ya prellenada y verifica el token al pegarlo.
+Desde un celular activado, *Pasar el acceso a otro celular* manda un link que activa otro dispositivo.
