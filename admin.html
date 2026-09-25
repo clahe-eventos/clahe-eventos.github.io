@@ -707,9 +707,9 @@ async function ghPut(token,path,b64,sha,message){
 const toB64=str=>new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>res(String(fr.result).split(',')[1]||'');fr.onerror=()=>rej(fr.error);fr.readAsDataURL(new Blob([str],{type:'text/html'}));});
 function pubMensaje(e){
   const s=e&&e.status, m=e&&e.message?' ('+e.message+')':'';
-  if(s===401)return 'GitHub rechazó la clave. Revisá que esté bien copiada o generá una nueva.';
-  if(s===403)return 'La clave no tiene permiso para escribir en el repositorio: tiene que tener "Contents: Read and write".'+m;
-  if(s===404)return 'GitHub no encuentra el repositorio con esta clave. Al crearla hay que darle acceso a '+PUB.repo+'.';
+  if(s===401)return 'GitHub rechazó el código de acceso. Puede haber vencido: activá el editor de nuevo con un código nuevo.';
+  if(s===403)return 'El código de acceso no tiene permiso para escribir en el sitio: tiene que ser "Contents: Read and write".'+m;
+  if(s===404)return 'GitHub no encuentra el sitio con este código de acceso. Al generarlo hay que darle acceso a '+PUB.repo+'.';
   if(!s)return 'No se pudo hablar con GitHub. Revisá la conexión y probá de nuevo.';
   return 'GitHub respondió con un error'+m+'.';
 }
@@ -729,15 +729,14 @@ pubEl.addEventListener('click',e=>{if(e.target===pubEl)pubClose();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!pubEl.hidden)pubClose();});
 
 function pubConfig(){
-  pubShow('<h2 id="pubTitle">Publicar con un link</h2>'+
-    '<p>Para publicar hace falta una clave de GitHub. Queda guardada solo en este dispositivo y se pide una sola vez.</p>'+
-    '<ol><li>Entrá a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.</li>'+
-    '<li>Si el repositorio está en una organización, en <b>Resource owner</b> elegí la organización.</li>'+
-    '<li>En <b>Repository access</b> elegí <i>Only select repositories</i> y marcá <b>'+PUB.repo+'</b>.</li>'+
-    '<li>En <b>Permissions › Repository permissions</b> poné <b>Contents: Read and write</b>. Generá la clave y pegala acá.</li></ol>'+
-    '<div class="field"><label for="pubTok">Clave de GitHub</label><input type="password" id="pubTok" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false"></div>'+
-    '<div class="rowb"><button class="btn primary" id="pubTokOk">Guardar y seguir</button><button class="btn" id="pubCancel">Cancelar</button></div>');
-  $p('pubTokOk').onclick=()=>{const t=$p('pubTok').value.trim();if(!t){toast('Pegá la clave primero');return;}tokenSet(t);pubStart();};
+  const linkTok='https://github.com/settings/personal-access-tokens/new?name=Editor+de+invitaciones+Clahe&description=Publicar+invitaciones+desde+el+editor&target_name='+encodeURIComponent(PUB.owner)+'&expires_in=365&contents=write';
+  pubShow('<h2 id="pubTitle">Activar la publicación</h2>'+
+    '<p>Para publicar con link, el editor necesita un permiso de la cuenta de GitHub de Clahe. Se activa una sola vez por celular.</p>'+
+    '<p><b>Si otra persona ya tiene el editor activado</b>, pedile que te lo pase desde su editor con el botón "Pasar el acceso a otro celular" y abrí ese link acá. No hay que hacer nada más.</p>'+
+    '<p><b>Si manejás la cuenta de GitHub</b>: <a href="'+linkTok+'" target="_blank" rel="noopener">abrí esta página</a>, en <i>Repository access</i> elegí <i>All repositories</i>, apretá el botón verde <i>Generate token</i> y pegá acá el código que te muestra.</p>'+
+    '<div class="field"><label for="pubTok">Código de acceso</label><input type="password" id="pubTok" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false"></div>'+
+    '<div class="rowb"><button class="btn primary" id="pubTokOk">Activar</button><button class="btn" id="pubCancel">Cancelar</button></div>');
+  $p('pubTokOk').onclick=()=>{const t=$p('pubTok').value.trim();if(!t){toast('Pegá el código primero');return;}tokenSet(t);toast('Editor activado ✓');pubStart();};
   $p('pubTok').onkeydown=e=>{if(e.key==='Enter')$p('pubTokOk').click();};
   $p('pubCancel').onclick=pubClose;
 }
@@ -748,7 +747,8 @@ function pubStart(){
     '<p>La invitación de <b id="pubQuien"></b> va a quedar en un link para mandar por WhatsApp. Si ya hay una publicada con el mismo nombre, se reemplaza.</p>'+
     '<div class="field"><label for="pubSlug">Nombre del link</label><input type="text" id="pubSlug" autocomplete="off" autocapitalize="off" spellcheck="false"></div>'+
     '<p class="hint">Queda en <span id="pubPrev"></span></p>'+
-    '<div class="rowb"><button class="btn primary" id="pubGo">Publicar ahora</button><button class="btn" id="pubCancel">Cancelar</button><button class="btn sm" id="pubTokChange">Cambiar clave</button></div>'+
+    '<div class="rowb"><button class="btn primary" id="pubGo">Publicar ahora</button><button class="btn" id="pubCancel">Cancelar</button></div>'+
+    '<div class="rowb"><button class="btn sm" id="pubPasar">Pasar el acceso a otro celular</button><button class="btn sm" id="pubTokChange">Cambiar acceso</button></div>'+
     (hist.length?'<div class="list"><div class="lt">Publicadas desde este dispositivo</div><div id="pubHist"></div></div>':''));
   $p('pubQuien').textContent=state.celebrant||'este evento';
   const inp=$p('pubSlug'), prev=$p('pubPrev');
@@ -758,6 +758,7 @@ function pubStart(){
   $p('pubGo').onclick=()=>{const n=slug(inp.value);if(!n){toast('Escribí un nombre para el link');return;}pubRun(n);};
   $p('pubCancel').onclick=pubClose;
   $p('pubTokChange').onclick=pubConfig;
+  $p('pubPasar').onclick=pubCompartirAcceso;
   if(hist.length){const h=$p('pubHist');hist.forEach(it=>{
     const row=document.createElement('div');row.className='it';
     const a=document.createElement('a');a.href=it.url;a.target='_blank';a.rel='noopener';a.textContent=(it.name||it.slug)+' · '+it.url.replace(PUB.base,'');
@@ -788,13 +789,23 @@ function pubDone(url,lento){
 
 function pubError(e,nombre){
   pubShow('<h2 id="pubTitle">No se pudo publicar</h2><p class="err" id="pubErr"></p>'+
-    '<div class="rowb"><button class="btn primary" id="pubRetry">Probar de nuevo</button><button class="btn" id="pubTokChange">Cambiar clave</button><button class="btn" id="pubCancel">Cerrar</button></div>');
+    '<div class="rowb"><button class="btn primary" id="pubRetry">Probar de nuevo</button><button class="btn" id="pubTokChange">Cambiar acceso</button><button class="btn" id="pubCancel">Cerrar</button></div>');
   $p('pubErr').textContent=pubMensaje(e);
   $p('pubRetry').onclick=()=>pubRun(nombre);
   $p('pubTokChange').onclick=pubConfig;
   $p('pubCancel').onclick=pubClose;
 }
 
+/* El que maneja la cuenta activa su editor y le manda al otro celular un solo
+   link (admin.html#acceso=...). Al abrirlo, el editor guarda el acceso y
+   limpia la dirección. El #... nunca viaja al servidor. */
+function pubCompartirAcceso(){
+  const t=tokenGet(); if(!t){pubConfig();return;}
+  const link=PUB.base+'admin.html#acceso='+encodeURIComponent(t);
+  const texto='Abrí este link una vez en tu celular y el editor de invitaciones de Clahe te queda activado para publicar:';
+  if(navigator.share){navigator.share({title:'Editor de invitaciones Clahe',text:texto,url:link}).catch(()=>{});return;}
+  window.open('https://wa.me/?text='+encodeURIComponent(texto+'\n'+link),'_blank','noopener');
+}
 async function pubCopy(url){
   try{await navigator.clipboard.writeText(url);toast('Link copiado ✓');return;}catch(e){}
   const i=$p('pubUrl'); if(i){i.select();try{if(document.execCommand('copy')){toast('Link copiado ✓');return;}}catch(e){}}
@@ -846,6 +857,12 @@ document.getElementById('fab').onclick=pubOpen;
 /* init */
 buildForm();render();
 if(IS_SMALL){ const b=document.querySelector('.dev[data-d="phone"]'); if(b)b.click(); }
+(function(){
+  const m=location.hash.match(/^#acceso=([^&]+)/); if(!m)return;
+  try{ tokenSet(decodeURIComponent(m[1])); }catch(e){}
+  try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+  toast('Editor activado en este celular ✓');
+})();
 </script>
 </body>
 </html>

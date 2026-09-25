@@ -13,11 +13,12 @@ El editor deduce el usuario u organización y el nombre del repositorio de la di
 repositorio puede cambiar de dueño o de nombre sin tocar el código. Si el sitio pasa a usar un dominio propio, hay que
 completar `PUB_FIJO` en `admin.html`.
 
-La primera vez pide una clave de GitHub, que queda guardada en ese dispositivo:
+La primera vez pide activarlo. Hay dos formas:
 
-1. Entrar a https://github.com/settings/personal-access-tokens/new
-2. Si el repositorio está en una organización, en *Resource owner* elegir la organización.
-3. *Repository access* → *Only select repositories* → este repositorio.
-4. *Permissions* → *Repository permissions* → **Contents: Read and write**. Generar la clave y pegarla en el editor.
+- **Desde otro celular ya activado**: botón *Pasar el acceso a otro celular*. Manda por WhatsApp un link
+  (`admin.html#acceso=...`) que, al abrirse una vez, deja el editor activado en ese celular.
+- **Desde la cuenta de GitHub**: generar un token fine-grained con permiso *Contents: Read and write* sobre el
+  repositorio (el editor abre la página ya prellenada) y pegarlo en el editor.
 
-El link tarda alrededor de un minuto en activarse. Para corregir algo, se vuelve a publicar con el mismo nombre y el link se actualiza.
+El token vence al año: el editor avisa y se vuelve a activar con uno nuevo. El link de cada invitación tarda alrededor
+de un minuto en activarse. Para corregir algo, se vuelve a publicar con el mismo nombre y el link se actualiza.
