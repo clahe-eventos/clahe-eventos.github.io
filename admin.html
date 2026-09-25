@@ -707,11 +707,22 @@ async function ghPut(token,path,b64,sha,message){
 const toB64=str=>new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>res(String(fr.result).split(',')[1]||'');fr.onerror=()=>rej(fr.error);fr.readAsDataURL(new Blob([str],{type:'text/html'}));});
 function pubMensaje(e){
   const s=e&&e.status, m=e&&e.message?' ('+e.message+')':'';
-  if(s===401)return 'GitHub rechazó el código de acceso. Puede haber vencido: activá el editor de nuevo con un código nuevo.';
+  if(s===401)return 'GitHub no reconoce el código de acceso: se copió incompleto o venció. Tocá "Cambiar acceso" y pegá uno nuevo.';
   if(s===403)return 'El código de acceso no tiene permiso para escribir en el sitio: tiene que ser "Contents: Read and write".'+m;
   if(s===404)return 'GitHub no encuentra el sitio con este código de acceso. Al generarlo hay que darle acceso a '+PUB.repo+'.';
   if(!s)return 'No se pudo hablar con GitHub. Revisá la conexión y probá de nuevo.';
   return 'GitHub respondió con un error'+m+'.';
+}
+/* Antes de guardar el código lo probamos contra GitHub, así el error salta al
+   pegarlo (con una explicación) y no recién al publicar. */
+async function verificarAcceso(t){
+  let r;
+  try{ r=await fetch('https://api.github.com/repos/'+PUB.owner+'/'+PUB.repo,{headers:ghHeaders(t),cache:'no-store'}); }
+  catch(e){ return {ok:false,msg:'No se pudo hablar con GitHub. Revisá la conexión y probá de nuevo.'}; }
+  if(r.status===401)return {ok:false,msg:'GitHub no reconoce ese código: seguramente se copió incompleto. Generá uno nuevo y copialo con el botoncito de copiar que está al lado.'};
+  if(r.status===404)return {ok:false,msg:'El código no tiene acceso a este sitio. Al generarlo, en "Resource owner" tiene que estar '+PUB.owner+' y en "Repository access" elegí All repositories.'};
+  if(!r.ok)return {ok:false,msg:'GitHub respondió con un error ('+r.status+'). Probá de nuevo en un rato.'};
+  return {ok:true};
 }
 
 let pubGen=0;
@@ -736,7 +747,17 @@ function pubConfig(){
     '<p><b>Si manejás la cuenta de GitHub</b>: <a href="'+linkTok+'" target="_blank" rel="noopener">abrí esta página</a>, en <i>Repository access</i> elegí <i>All repositories</i>, apretá el botón verde <i>Generate token</i> y pegá acá el código que te muestra.</p>'+
     '<div class="field"><label for="pubTok">Código de acceso</label><input type="password" id="pubTok" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false"></div>'+
     '<div class="rowb"><button class="btn primary" id="pubTokOk">Activar</button><button class="btn" id="pubCancel">Cancelar</button></div>');
-  $p('pubTokOk').onclick=()=>{const t=$p('pubTok').value.trim();if(!t){toast('Pegá el código primero');return;}tokenSet(t);toast('Editor activado ✓');pubStart();};
+  $p('pubTokOk').onclick=async()=>{
+    const btn=$p('pubTokOk'), t=$p('pubTok').value.replace(/\s+/g,'');
+    const aviso=m=>{let p=$p('pubTokErr');if(!p){p=document.createElement('p');p.className='err';p.id='pubTokErr';$p('pubTok').parentNode.after(p);}p.textContent=m;};
+    if(!t){toast('Pegá el código primero');return;}
+    if(!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(t)){aviso('Eso no parece un código de GitHub: el código empieza con "github_pat_" y es largo. En la página de GitHub copialo con el botoncito de copiar que está al lado.');return;}
+    btn.disabled=true;btn.textContent='Verificando…';
+    const v=await verificarAcceso(t);
+    btn.disabled=false;btn.textContent='Activar';
+    if(!v.ok){aviso(v.msg);return;}
+    tokenSet(t);toast('Acceso verificado ✓');pubStart();
+  };
   $p('pubTok').onkeydown=e=>{if(e.key==='Enter')$p('pubTokOk').click();};
   $p('pubCancel').onclick=pubClose;
 }
